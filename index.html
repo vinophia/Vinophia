@@ -458,14 +458,50 @@
   @media(max-width:960px){.nav-tools{margin-left:0}.theme-toggle{width:62px;height:30px}.theme-toggle .theme-thumb{width:24px;height:24px}.lang-btn{padding:.42rem .48rem}body.theme-dark .theme-toggle .theme-thumb{transform:translateX(32px)}}
   @media(max-width:560px){.nav-inner{gap:.75rem}.nav-tools{gap:.4rem}.logo{font-size:17px}.nav-cta{padding:.5rem .72rem}.theme-toggle{width:58px;height:28px;padding:0 .38rem}.theme-toggle .theme-icon{font-size:12px}.theme-toggle .theme-thumb{width:22px;height:22px}.lang-btn{font-size:8px;padding:.39rem .43rem}body.theme-dark .theme-toggle .theme-thumb{transform:translateX(30px)}}
 
+
+
+  /* MOBILE NAV + HEADER */
+  .menu-toggle{display:none;width:42px;height:36px;border:.5px solid var(--line-dark);border-radius:999px;background:rgba(245,241,234,.045);align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer;transition:border-color .25s,background .25s}
+  .menu-toggle span{width:16px;height:1px;background:var(--paper);display:block;transition:transform .25s,opacity .25s}
+  .menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(5px) rotate(45deg)}
+  .menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+  .mobile-menu{display:none;position:fixed;top:64px;left:1rem;right:1rem;z-index:49;border:.5px solid var(--line-dark);border-radius:20px;background:rgba(26,18,22,.97);backdrop-filter:blur(14px);padding:1rem;box-shadow:0 22px 80px rgba(0,0,0,.28)}
+  .mobile-menu.open{display:block}
+  .mobile-links{display:grid;grid-template-columns:1fr 1fr;gap:.45rem .65rem;margin-bottom:1rem}
+  .mobile-links a{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--paper);border:.5px solid var(--line-dark);border-radius:999px;padding:.7rem .75rem;text-align:center;background:rgba(245,241,234,.035)}
+  .mobile-links a:hover{border-color:var(--gold);color:var(--gold)}
+  .mobile-tools{display:flex;justify-content:space-between;border-top:.5px solid var(--line-dark);padding-top:1rem;margin-left:0}
+  .section-head.sentence-head{display:block;margin-bottom:2.2rem}
+  .section-head.sentence-head h2{max-width:25ch}
+  .section-head.sentence-head .eyebrow-inline{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--wine);font-weight:400;margin-right:.55rem;vertical-align:middle}
+  body.theme-dark .section-head.sentence-head .eyebrow-inline{color:var(--gold)}
+  @media(max-width:960px){
+    .desktop-nav,.desktop-tools{display:none!important}
+    .menu-toggle{display:inline-flex}
+    .nav-inner{gap:.65rem}
+    .nav-cta{margin-left:auto}
+    .logo{font-size:19px;letter-spacing:.08em}
+    header.nav{padding:.75rem 0}
+    header.nav.scrolled{padding:.58rem 0}
+  }
+  @media(max-width:560px){
+    .mobile-menu{top:58px;left:.75rem;right:.75rem;border-radius:18px}
+    .mobile-links{grid-template-columns:1fr}
+    .mobile-tools{align-items:center}
+    .logo{font-size:18px;letter-spacing:.06em}
+    .nav-cta{font-size:9px;padding:.52rem .72rem}
+    .menu-toggle{width:38px;height:34px}
+    .section-head.sentence-head h2{font-size:clamp(1.75rem,8vw,2.35rem)}
+  }
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.scroll-cue .bar{animation:none}}
 </style>
 </head>
 <body>
 <header class="nav" id="nav">
 <div class="nav-inner">
-<a class="logo" href="#top">VINO<b>PHIA</b><span class="by">Consultora del vino</span></a>
-<nav class="nav-links">
+<a class="logo" href="#top">Vinophia</a>
+<nav class="nav-links desktop-nav" aria-label="Secciones principales">
 <a href="#esencia">Esencia</a>
 <a href="#pilares">Pilares</a>
 <a href="#ecosistema">Ecosistema</a>
@@ -474,8 +510,7 @@
 <a href="#bonus">Bonus</a>
 <a href="#inversion">Inversión</a>
 </nav>
-
-<div aria-label="Opciones de idioma y tema" class="nav-tools">
+<div aria-label="Opciones de idioma y tema" class="nav-tools desktop-tools">
 <div aria-label="Idioma" class="lang-switch" role="group">
 <button class="lang-btn active" data-lang="es" type="button">ES</button>
 <button class="lang-btn" data-lang="en" type="button">EN</button>
@@ -484,6 +519,27 @@
 <button aria-label="Activar modo oscuro" aria-pressed="false" class="theme-toggle" id="theme-toggle" title="Activar modo oscuro" type="button"><span aria-hidden="true" class="theme-icon sun">☀</span><span aria-hidden="true" class="theme-icon moon">☾</span><span aria-hidden="true" class="theme-thumb"></span></button>
 </div>
 <a class="nav-cta" href="#postulacion">Postular</a>
+<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú" class="menu-toggle" id="menu-toggle" type="button"><span></span><span></span><span></span></button>
+</div>
+<div class="mobile-menu" id="mobile-menu">
+<nav class="mobile-links" aria-label="Secciones móviles">
+<a href="#esencia">Esencia</a>
+<a href="#pilares">Pilares</a>
+<a href="#ecosistema">Ecosistema</a>
+<a href="#mentoria">Mentoría</a>
+<a href="#mentores">Mentores</a>
+<a href="#bonus">Bonus</a>
+<a href="#inversion">Inversión</a>
+<a href="#postulacion">Postulación</a>
+</nav>
+<div aria-label="Opciones de idioma y tema" class="nav-tools mobile-tools">
+<div aria-label="Idioma" class="lang-switch" role="group">
+<button class="lang-btn active" data-lang="es" type="button">ES</button>
+<button class="lang-btn" data-lang="en" type="button">EN</button>
+<button class="lang-btn" data-lang="pt" type="button">PT</button>
+</div>
+<button aria-label="Activar modo oscuro" aria-pressed="false" class="theme-toggle" id="theme-toggle-mobile" title="Activar modo oscuro" type="button"><span aria-hidden="true" class="theme-icon sun">☀</span><span aria-hidden="true" class="theme-icon moon">☾</span><span aria-hidden="true" class="theme-thumb"></span></button>
+</div>
 </div>
 </header>
 <!-- HERO -->
@@ -726,7 +782,7 @@
 <!-- OPPORTUNITIES -->
 <section class="opps" id="oportunidades">
 <div class="wrap">
-<div class="section-head reveal"><span class="eyebrow">Oportunidades</span><h2>La pregunta no es solo quién sos. Es qué podés crear con eso.</h2></div>
+<div class="section-head sentence-head reveal"><h2><span class="eyebrow-inline">Oportunidades</span>La pregunta no es solo quién sos, es qué podés crear con eso.</h2></div>
 <p class="intro-copy reveal">La mentoría no te empuja a copiar un modelo ajeno. Te ayuda a detectar oportunidades coherentes con tu trayectoria, tu autoridad, tus recursos y el lugar que querés ocupar en el mundo del vino.</p>
 <div class="opps-grid">
 <div class="ocell reveal"><div class="on">01</div><h3>Servicios propios</h3><p>Consultoría, asesoría, mentorías, formación o acompañamientos diseñados desde tu experiencia real.</p></div>
@@ -798,73 +854,43 @@
 </div>
 <div>
 <p>La mentoría incluye activos, accesos y experiencias que quedan disponibles después del programa. Cada punto está pensado para que la marca no termine en un documento, sino que entre en una red, una plataforma y una dinámica de evolución real.</p>
-<div class="bonus-total"><span>Valor estimado del paquete completo</span><strong>USD 4.800+</strong></div>
-<p class="bonus-note">Valor estimado de los activos, accesos y experiencias incluidos en el sistema. No son canjeables por dinero ni funcionan como descuento sobre la inversión. No incluye el distintivo Embajador Fundador, porque no se comercializa por fuera de la mentoría.</p>
+<div class="bonus-total"><span>Valor estimado del paquete completo</span><strong>USD 5.400+</strong></div>
+<p class="bonus-note">Valor estimado de los accesos y espacios incluidos en el sistema. No son canjeables por dinero ni funcionan como descuento sobre la inversión. No incluye el distintivo Embajador Fundador, porque no se comercializa por fuera de la mentoría.</p>
 </div>
 </div>
 <div class="bonus-grid">
 <article class="bonus-card reveal">
 <details>
-<summary><span class="bonus-kicker">Bonus 01</span><h3>Liderazgo: ¿Y ahora cómo llego al mundo?</h3><p class="short">Masterclass para traducir claridad interna en presencia, autoridad y decisiones concretas.</p><span class="value">Valor referencial: <strong>USD 350</strong></span></summary>
-<div class="bonus-detail">Una sesión para trabajar la salida al mercado desde un lugar más sólido: cómo sostener una voz propia, cómo liderar una conversación, cómo tomar decisiones con criterio y cómo dejar de pedir permiso para ocupar un lugar profesional.
-            <ul><li>Presencia y autoridad profesional.</li><li>Toma de decisiones y foco.</li><li>Cómo pasar de claridad personal a acción pública.</li></ul>
+<summary><span class="bonus-kicker">Bonus 01</span><h3>WinesOf PASS gratis de por vida</h3><p class="short">Membresía PASS lifetime para disfrutar beneficios, experiencias y activaciones del ecosistema.</p><span class="value">Valor referencial: <strong>USD 1.800</strong></span></summary>
+<div class="bonus-detail">Acceso de por vida a WinesOf PASS para usar beneficios en bodegas, restaurantes, vinotecas, hoteles, cursos y experiencias adheridas. Es una puerta de entrada concreta al ecosistema que la mentoría busca activar.
+            <ul><li>Membresía digital incluida sin costo mensual ni anual.</li><li>Beneficios en empresas adheridas del ecosistema WinesOf PASS.</li><li>Acceso a futuras activaciones y experiencias según disponibilidad de cada edición.</li></ul>
+<span class="fine">Los beneficios dependen de las condiciones vigentes de cada empresa adherida.</span>
 </div>
 </details>
 </article>
 <article class="bonus-card reveal">
 <details>
-<summary><span class="bonus-kicker">Bonus 02</span><h3>Carta natal aplicada</h3><p class="short">Lectura optativa como herramienta de autoconocimiento para identidad, propósito y momento vital.</p><span class="value">Valor referencial: <strong>USD 300</strong></span></summary>
-<div class="bonus-detail">No se plantea como predicción ni como fórmula. Se usa como una lectura simbólica para abrir preguntas útiles: qué energía traés, qué tensiones aparecen, qué estilo de expresión te resulta más orgánico y qué etapa estás transitando.
-            <ul><li>Lectura de patrones de identidad.</li><li>Preguntas para propósito y narrativa.</li><li>Integración con el proceso de marca.</li></ul>
+<summary><span class="bonus-kicker">Bonus 02</span><h3>Embajador Fundador de WinesOf</h3><p class="short">Distintivo, posicionamiento y prioridad en futuras activaciones del ecosistema.</p><span class="value">Exclusivo de la mentoría</span></summary>
+<div class="bonus-detail">Un lugar de reconocimiento para quienes integran la edición fundacional. No es un beneficio comercializable por separado: es una marca de pertenencia y posicionamiento dentro del ecosistema.
+            <ul><li>Distintivo para usar en comunicación profesional.</li><li>Mayor visibilidad dentro del ecosistema WinesOf.</li><li>Prioridad para oportunidades, contenidos, alianzas y activaciones futuras.</li></ul>
+<span class="fine">Este bonus no tiene precio referencial porque es exclusivo para participantes de la mentoría.</span>
 </div>
 </details>
 </article>
 <article class="bonus-card reveal">
 <details>
-<summary><span class="bonus-kicker">Bonus 03</span><h3>Mapa de fortalezas personales</h3><p class="short">Activación de fortalezas para fortalecer tu propuesta de valor y tu diferenciación.</p><span class="value">Valor referencial: <strong>USD 450</strong></span></summary>
-<div class="bonus-detail">Una herramienta para dejar de definir la marca solo por lo que hacés y empezar a verla desde lo que sabés sostener mejor que otros: mirada, recursos, historia, habilidades, vínculos, sensibilidad y criterio.
-            <ul><li>Fortalezas visibles e invisibles.</li><li>Recursos disponibles para monetizar.</li><li>Diferenciación desde capacidades reales.</li></ul>
-</div>
-</details>
-</article>
-<article class="bonus-card reveal">
-<details>
-<summary><span class="bonus-kicker">Bonus 04</span><h3>Embajador Fundador de WinesOf</h3><p class="short">Distintivo, posicionamiento y prioridad en futuras activaciones del ecosistema.</p><span class="value">Exclusivo de la mentoría</span></summary>
-<div class="bonus-detail">Un lugar de reconocimiento para la edición fundacional. El participante queda identificado como parte del grupo inicial que ayudó a dar forma a Vinophia dentro del ecosistema WinesOf.
-            <ul><li>Distintivo para usar en comunicación profesional.</li><li>Mayor visibilidad dentro del ecosistema.</li><li>Prioridad para oportunidades, contenidos y activaciones futuras.</li></ul>
-</div>
-</details>
-</article>
-<article class="bonus-card reveal">
-<details>
-<summary><span class="bonus-kicker">Bonus 05</span><h3>Acceso lifetime a WinesOf</h3><p class="short">Acceso sin costo de por vida a plataforma y herramientas propias desarrolladas por WinesOf.</p><span class="value">Valor referencial: <strong>USD 1.200</strong></span></summary>
-<div class="bonus-detail">El participante conserva acceso a los desarrollos propios vinculados al ecosistema y al programa. La intención es que lo trabajado en la mentoría pueda seguir vivo en perfiles, visibilidad, contenidos, herramientas y futuras funciones.
-            <ul><li>Acceso a desarrollos propios de WinesOf.</li><li>Uso de herramientas vinculadas al ecosistema.</li><li>Continuidad posterior al cierre de la mentoría.</li></ul>
+<summary><span class="bonus-kicker">Bonus 03</span><h3>Acceso lifetime a WinesOf</h3><p class="short">Acceso sin costo de por vida a la plataforma y herramientas propias desarrolladas por WinesOf.</p><span class="value">Valor referencial: <strong>USD 2.400</strong></span></summary>
+<div class="bonus-detail">El participante conserva acceso a desarrollos propios vinculados al ecosistema y al programa. La intención es que lo trabajado en la mentoría pueda seguir vivo en perfiles, visibilidad, contenidos, herramientas y futuras funciones.
+            <ul><li>Acceso lifetime a herramientas propias de WinesOf.</li><li>Perfil, visibilidad y recursos vinculados al ecosistema.</li><li>Continuidad posterior al cierre de la mentoría.</li></ul>
 <span class="fine">No incluye costos de terceros, pauta, dominios, servidores externos, servicios privados ni herramientas ajenas a WinesOf.</span>
 </div>
 </details>
 </article>
 <article class="bonus-card reveal">
 <details>
-<summary><span class="bonus-kicker">Bonus 06</span><h3>WinesOf PASS gratis de por vida</h3><p class="short">Membresía PASS lifetime para disfrutar beneficios del ecosistema.</p><span class="value">Valor referencial: <strong>USD 1.500</strong></span></summary>
-<div class="bonus-detail">Acceso de por vida a WinesOf PASS para usar beneficios en bodegas, restaurantes, vinotecas, hoteles y experiencias adheridas. También funciona como puerta de entrada cotidiana al ecosistema que la mentoría busca activar.
-            <ul><li>Membresía digital incluida.</li><li>Beneficios en empresas adheridas.</li><li>Si ya tenés PASS, posibilidad de transferir el beneficio según condiciones de la edición.</li></ul>
-</div>
-</details>
-</article>
-<article class="bonus-card reveal">
-<details>
-<summary><span class="bonus-kicker">Bonus 07</span><h3>Laboratorio de Negocios del Vino</h3><p class="short">Grupo exclusivo de acompañamiento, networking y seguimiento después del programa.</p><span class="value">Valor referencial: <strong>USD 650</strong></span></summary>
+<summary><span class="bonus-kicker">Bonus 04</span><h3>Laboratorio de Negocios del Vino</h3><p class="short">Grupo exclusivo de acompañamiento, networking y seguimiento después del programa.</p><span class="value">Valor referencial: <strong>USD 1.200</strong></span></summary>
 <div class="bonus-detail">El espacio donde la mentoría sigue respirando. La comunidad permite mantener contacto, compartir avances, pedir feedback, detectar alianzas y sostener la evolución del proyecto cuando termina la etapa intensiva.
-            <ul><li>Networking entre perfiles seleccionados.</li><li>Seguimiento y conversación posterior.</li><li>Intercambio de oportunidades dentro del sector.</li></ul>
-</div>
-</details>
-</article>
-<article class="bonus-card reveal">
-<details>
-<summary><span class="bonus-kicker">Bonus 08</span><h3>Vino como artículo de lujo</h3><p class="short">Masterclass sobre experiencias, valor percibido, premiumización y posicionamiento high ticket.</p><span class="value">Valor referencial: <strong>USD 350</strong></span></summary>
-<div class="bonus-detail">Una sesión para pensar cómo se crea percepción de valor en el mundo del vino: no desde el precio aislado, sino desde relato, experiencia, ritual, estética, servicio, escasez, autoridad y confianza.
-            <ul><li>Premiumización sin perder autenticidad.</li><li>Experiencias y rituales de valor.</li><li>Cómo justificar una propuesta de mayor ticket.</li></ul>
+            <ul><li>Networking entre perfiles seleccionados.</li><li>Seguimiento y conversación posterior al programa.</li><li>Intercambio de oportunidades dentro del sector.</li></ul>
 </div>
 </details>
 </article>
@@ -916,7 +942,8 @@
 <form action="https://hook.us2.make.com/ks92raptekvmy6ssnp97gdequ9n87rmp" class="apply-form reveal" data-webhook="make" id="vinophia-application-form" method="post">
 <div class="form-title">Formulario de postulación</div>
 <div class="form-grid">
-<div class="field"><label for="name">Nombre y apellido</label><input id="name" name="nombre" placeholder="Ej. Andrea Pérez" required="" type="text"/></div>
+<div class="field"><label for="name">Nombre</label><input id="name" name="nombre" placeholder="Ej. Andrea" required="" type="text"/></div>
+<div class="field"><label for="surname">Apellido</label><input id="surname" name="apellido" placeholder="Ej. Pérez" required="" type="text"/></div>
 <div class="field"><label for="email">Email</label><input id="email" name="email" placeholder="tu@email.com" required="" type="email"/></div>
 <div class="field"><label for="whatsapp">WhatsApp</label><input id="whatsapp" name="whatsapp" placeholder="+598..." required="" type="text"/></div>
 <div class="field"><label for="city">País / ciudad</label><input id="city" name="ubicacion" placeholder="Uruguay · Montevideo" required="" type="text"/></div>
@@ -1238,7 +1265,7 @@
     "Mapa de oportunidades de negocio y fuentes de ingreso posibles.": "Map of business opportunities and possible revenue streams.",
     "Plan de acción, visibilidad y validación para los 90 días siguientes.": "Action, visibility and validation plan for the following 90 days.",
     "Oportunidades": "Opportunities",
-    "La pregunta no es solo quién sos. Es qué podés crear con eso.": "The question is not only who you are. It is what you can create with it.",
+    "La pregunta no es solo quién sos, es qué podés crear con eso.": "The question is not only who you are, it is what you can create with it.",
     "La mentoría no te empuja a copiar un modelo ajeno. Te ayuda a detectar oportunidades coherentes con tu trayectoria, tu autoridad, tus recursos y el lugar que querés ocupar en el mundo del vino.": "The mentorship does not push you to copy someone else’s model. It helps you detect opportunities coherent with your trajectory, authority, resources and the place you want to occupy in the wine world.",
     "Servicios propios": "Own services",
     "Consultoría, asesoría, mentorías, formación o acompañamientos diseñados desde tu experiencia real.": "Consulting, advisory, mentorships, training or support designed from your real experience.",
@@ -1290,7 +1317,7 @@
     "La mentoría incluye activos, accesos y experiencias que quedan disponibles después del programa. Cada punto está pensado para que la marca no termine en un documento, sino que entre en una red, una plataforma y una dinámica de evolución real.": "The mentorship includes assets, access and experiences that remain available after the program. Each point is designed so the brand does not end in a document, but enters a network, a platform and a real evolution dynamic.",
     "Valor estimado del paquete completo": "Estimated value of the full package",
     "USD 4.800+": "USD 4,800+",
-    "Valor estimado de los activos, accesos y experiencias incluidos en el sistema. No son canjeables por dinero ni funcionan como descuento sobre la inversión. No incluye el distintivo Embajador Fundador, porque no se comercializa por fuera de la mentoría.": "Estimated value of the assets, access and experiences included in the system. They cannot be exchanged for money and do not work as a discount on the investment. It does not include the Founding Ambassador distinction, because it is not sold outside the mentorship.",
+    "Valor estimado de los accesos y espacios incluidos en el sistema. No son canjeables por dinero ni funcionan como descuento sobre la inversión. No incluye el distintivo Embajador Fundador, porque no se comercializa por fuera de la mentoría.": "Estimated value of the assets, access and experiences included in the system. They cannot be exchanged for money and do not work as a discount on the investment. It does not include the Founding Ambassador distinction, because it is not sold outside the mentorship.",
     "Liderazgo: ¿Y ahora cómo llego al mundo?": "Leadership: how do I now reach the world?",
     "Masterclass para traducir claridad interna en presencia, autoridad y decisiones concretas.": "Masterclass to turn internal clarity into presence, authority and concrete decisions.",
     "Valor estimado:": "Estimated value:",
@@ -1428,6 +1455,29 @@
     "Describí tu proyecto, qué vendés, a quién y desde cuándo.": "Describe your project, what you sell, to whom and since when.",
     "Ej. Tengo buena propuesta pero no logro comunicarla / vendo pero no soy rentable / no tengo claro mi posicionamiento...": "Ex. I have a good offer but cannot communicate it / I sell but am not profitable / I do not have clear positioning...",
     "Ej. agenda de experiencias, cartas digitales, CRM de clientes, IA para contenidos, trazabilidad, beneficios PASS...": "Ex. experience calendar, digital menus, customer CRM, AI for content, traceability, PASS benefits...",
+    "Abrir menú": "Open menu",
+    "Cerrar menú": "Close menu",
+    "Postulación": "Application",
+    "Oportunidades": "Opportunities",
+    "La pregunta no es solo quién sos, es qué podés crear con eso.": "The question is not only who you are, it is what you can create with it.",
+    "Valor estimado de los accesos y espacios incluidos en el sistema. No son canjeables por dinero ni funcionan como descuento sobre la inversión. No incluye el distintivo Embajador Fundador, porque no se comercializa por fuera de la mentoría.": "Estimated value of the access and spaces included in the system. They cannot be exchanged for money and do not work as a discount on the investment. It does not include the Founding Ambassador distinction, because it is not sold outside the mentorship.",
+    "Membresía PASS lifetime para disfrutar beneficios, experiencias y activaciones del ecosistema.": "Lifetime PASS membership to enjoy benefits, experiences and ecosystem activations.",
+    "Acceso de por vida a WinesOf PASS para usar beneficios en bodegas, restaurantes, vinotecas, hoteles, cursos y experiencias adheridas. Es una puerta de entrada concreta al ecosistema que la mentoría busca activar.": "Lifetime access to WinesOf PASS to use benefits at participating wineries, restaurants, wine shops, hotels, courses and experiences. It is a concrete gateway into the ecosystem the mentorship seeks to activate.",
+    "Membresía digital incluida sin costo mensual ni anual.": "Digital membership included with no monthly or annual cost.",
+    "Beneficios en empresas adheridas del ecosistema WinesOf PASS.": "Benefits at companies participating in the WinesOf PASS ecosystem.",
+    "Acceso a futuras activaciones y experiencias según disponibilidad de cada edición.": "Access to future activations and experiences depending on availability in each edition.",
+    "Los beneficios dependen de las condiciones vigentes de cada empresa adherida.": "Benefits depend on the current conditions of each participating company.",
+    "Un lugar de reconocimiento para quienes integran la edición fundacional. No es un beneficio comercializable por separado: es una marca de pertenencia y posicionamiento dentro del ecosistema.": "A recognition space for those who join the founding edition. It is not a benefit sold separately: it is a mark of belonging and positioning within the ecosystem.",
+    "Este bonus no tiene precio referencial porque es exclusivo para participantes de la mentoría.": "This bonus has no reference price because it is exclusive to mentorship participants.",
+    "Acceso sin costo de por vida a la plataforma y herramientas propias desarrolladas por WinesOf.": "Free lifetime access to the platform and proprietary tools developed by WinesOf.",
+    "Acceso lifetime a herramientas propias de WinesOf.": "Lifetime access to WinesOf proprietary tools.",
+    "Perfil, visibilidad y recursos vinculados al ecosistema.": "Profile, visibility and resources linked to the ecosystem.",
+    "Continuidad posterior al cierre de la mentoría.": "Continuity after the mentorship ends.",
+    "Seguimiento y conversación posterior al programa.": "Follow-up and conversation after the program.",
+    "Nombre": "First name",
+    "Apellido": "Last name",
+    "Ej. Andrea": "Ex. Andrea",
+    "Ej. Pérez": "Ex. Pérez",
     "Activar modo oscuro": "Enable dark mode",
     "Activar modo claro": "Enable light mode",
     "Dark": "Dark",
@@ -1695,7 +1745,7 @@
     "Mapa de oportunidades de negocio y fuentes de ingreso posibles.": "Mapa de oportunidades de negócio e possíveis fontes de receita.",
     "Plan de acción, visibilidad y validación para los 90 días siguientes.": "Plano de ação, visibilidade e validação para os próximos 90 dias.",
     "Oportunidades": "Oportunidades",
-    "La pregunta no es solo quién sos. Es qué podés crear con eso.": "A pergunta não é apenas quem você é. É o que você pode criar com isso.",
+    "La pregunta no es solo quién sos, es qué podés crear con eso.": "A pergunta não é apenas quem você é, é o que você pode criar com isso.",
     "La mentoría no te empuja a copiar un modelo ajeno. Te ayuda a detectar oportunidades coherentes con tu trayectoria, tu autoridad, tus recursos y el lugar que querés ocupar en el mundo del vino.": "A mentoria não empurra você a copiar um modelo alheio. Ela ajuda a detectar oportunidades coerentes com sua trajetória, sua autoridade, seus recursos e o lugar que você quer ocupar no mundo do vinho.",
     "Servicios propios": "Serviços próprios",
     "Consultoría, asesoría, mentorías, formación o acompañamientos diseñados desde tu experiencia real.": "Consultoria, assessoria, mentorias, formação ou acompanhamentos desenhados a partir da sua experiência real.",
@@ -1747,7 +1797,7 @@
     "La mentoría incluye activos, accesos y experiencias que quedan disponibles después del programa. Cada punto está pensado para que la marca no termine en un documento, sino que entre en una red, una plataforma y una dinámica de evolución real.": "A mentoria inclui ativos, acessos e experiências que ficam disponíveis depois do programa. Cada ponto foi pensado para que a marca não termine em um documento, mas entre em uma rede, uma plataforma e uma dinâmica de evolução real.",
     "Valor estimado del paquete completo": "Valor estimado do pacote completo",
     "USD 4.800+": "USD 4.800+",
-    "Valor estimado de los activos, accesos y experiencias incluidos en el sistema. No son canjeables por dinero ni funcionan como descuento sobre la inversión. No incluye el distintivo Embajador Fundador, porque no se comercializa por fuera de la mentoría.": "Valor estimado dos ativos, acessos e experiências incluídos no sistema. Não são trocáveis por dinheiro nem funcionam como desconto sobre o investimento. Não inclui o distintivo Embaixador Fundador, porque ele não é comercializado fora da mentoria.",
+    "Valor estimado de los accesos y espacios incluidos en el sistema. No son canjeables por dinero ni funcionan como descuento sobre la inversión. No incluye el distintivo Embajador Fundador, porque no se comercializa por fuera de la mentoría.": "Valor estimado dos ativos, acessos e experiências incluídos no sistema. Não são trocáveis por dinheiro nem funcionam como desconto sobre o investimento. Não inclui o distintivo Embaixador Fundador, porque ele não é comercializado fora da mentoria.",
     "Liderazgo: ¿Y ahora cómo llego al mundo?": "Liderança: e agora, como chego ao mundo?",
     "Masterclass para traducir claridad interna en presencia, autoridad y decisiones concretas.": "Masterclass para traduzir clareza interna em presença, autoridade e decisões concretas.",
     "Valor estimado:": "Valor estimado:",
@@ -1884,6 +1934,29 @@
     "Describí tu proyecto, qué vendés, a quién y desde cuándo.": "Descreva seu projeto, o que vende, para quem e desde quando.",
     "Ej. Tengo buena propuesta pero no logro comunicarla / vendo pero no soy rentable / no tengo claro mi posicionamiento...": "Ex. Tenho uma boa proposta, mas não consigo comunicá-la / vendo, mas não sou rentável / não tenho meu posicionamento claro...",
     "Ej. agenda de experiencias, cartas digitales, CRM de clientes, IA para contenidos, trazabilidad, beneficios PASS...": "Ex. agenda de experiências, cartas digitais, CRM de clientes, IA para conteúdos, rastreabilidade, benefícios PASS...",
+    "Abrir menú": "Abrir menu",
+    "Cerrar menú": "Fechar menu",
+    "Postulación": "Candidatura",
+    "Oportunidades": "Oportunidades",
+    "La pregunta no es solo quién sos, es qué podés crear con eso.": "A pergunta não é só quem você é, é o que pode criar com isso.",
+    "Valor estimado de los accesos y espacios incluidos en el sistema. No son canjeables por dinero ni funcionan como descuento sobre la inversión. No incluye el distintivo Embajador Fundador, porque no se comercializa por fuera de la mentoría.": "Valor estimado dos acessos e espaços incluídos no sistema. Não são trocáveis por dinheiro nem funcionam como desconto sobre o investimento. Não inclui o distintivo Embaixador Fundador, porque ele não é comercializado fora da mentoria.",
+    "Membresía PASS lifetime para disfrutar beneficios, experiencias y activaciones del ecosistema.": "Membresia PASS vitalícia para aproveitar benefícios, experiências e ativações do ecossistema.",
+    "Acceso de por vida a WinesOf PASS para usar beneficios en bodegas, restaurantes, vinotecas, hoteles, cursos y experiencias adheridas. Es una puerta de entrada concreta al ecosistema que la mentoría busca activar.": "Acesso vitalício ao WinesOf PASS para usar benefícios em vinícolas, restaurantes, lojas de vinho, hotéis, cursos e experiências aderentes. É uma porta de entrada concreta para o ecossistema que a mentoria busca ativar.",
+    "Membresía digital incluida sin costo mensual ni anual.": "Membresia digital incluída sem custo mensal nem anual.",
+    "Beneficios en empresas adheridas del ecosistema WinesOf PASS.": "Benefícios em empresas aderentes do ecossistema WinesOf PASS.",
+    "Acceso a futuras activaciones y experiencias según disponibilidad de cada edición.": "Acesso a futuras ativações e experiências conforme disponibilidade de cada edição.",
+    "Los beneficios dependen de las condiciones vigentes de cada empresa adherida.": "Os benefícios dependem das condições vigentes de cada empresa aderente.",
+    "Un lugar de reconocimiento para quienes integran la edición fundacional. No es un beneficio comercializable por separado: es una marca de pertenencia y posicionamiento dentro del ecosistema.": "Um espaço de reconhecimento para quem integra a edição fundadora. Não é um benefício comercializado separadamente: é uma marca de pertencimento e posicionamento dentro do ecossistema.",
+    "Este bonus no tiene precio referencial porque es exclusivo para participantes de la mentoría.": "Este bônus não tem preço referencial porque é exclusivo para participantes da mentoria.",
+    "Acceso sin costo de por vida a la plataforma y herramientas propias desarrolladas por WinesOf.": "Acesso gratuito e vitalício à plataforma e ferramentas próprias desenvolvidas pela WinesOf.",
+    "Acceso lifetime a herramientas propias de WinesOf.": "Acesso vitalício a ferramentas próprias da WinesOf.",
+    "Perfil, visibilidad y recursos vinculados al ecosistema.": "Perfil, visibilidade e recursos vinculados ao ecossistema.",
+    "Continuidad posterior al cierre de la mentoría.": "Continuidade após o encerramento da mentoria.",
+    "Seguimiento y conversación posterior al programa.": "Acompanhamento e conversa após o programa.",
+    "Nombre": "Nome",
+    "Apellido": "Sobrenome",
+    "Ej. Andrea": "Ex. Andrea",
+    "Ej. Pérez": "Ex. Pérez",
     "Activar modo oscuro": "Ativar modo escuro",
     "Activar modo claro": "Ativar modo claro",
     "Dark": "Escuro",
@@ -1935,8 +2008,7 @@
       document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
       localStorage.setItem('vinophia-lang', lang);
       setActive(lang);
-      const toggle = document.getElementById('theme-toggle');
-      if(toggle) updateThemeButton(toggle);
+      document.querySelectorAll('.theme-toggle').forEach(toggle=>updateThemeButton(toggle));
     };
     document.querySelectorAll('.lang-btn').forEach(btn=>{
       btn.addEventListener('click',()=>window.setVinophiaLanguage(btn.dataset.lang));
@@ -1952,17 +2024,18 @@
       button.setAttribute('aria-pressed', String(isDark));
       button.dataset.nextTheme = isDark ? 'light' : 'dark';
     };
-    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggles = document.querySelectorAll('.theme-toggle');
     const savedTheme = localStorage.getItem('vinophia-theme');
     if(savedTheme === 'dark') document.body.classList.add('theme-dark');
-    if(themeToggle){
-      updateThemeButton(themeToggle);
-      themeToggle.addEventListener('click',()=>{
+    const refreshThemeToggles = () => themeToggles.forEach(toggle=>updateThemeButton(toggle));
+    themeToggles.forEach(toggle=>{
+      updateThemeButton(toggle);
+      toggle.addEventListener('click',()=>{
         document.body.classList.toggle('theme-dark');
         localStorage.setItem('vinophia-theme', document.body.classList.contains('theme-dark') ? 'dark' : 'light');
-        updateThemeButton(themeToggle);
+        refreshThemeToggles();
       });
-    }
+    });
     window.setVinophiaLanguage(localStorage.getItem('vinophia-lang') || 'es');
   })();
 </script>
@@ -1970,6 +2043,24 @@
   const nav=document.getElementById('nav');
   const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>60);
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  const menuToggle=document.getElementById('menu-toggle');
+  const mobileMenu=document.getElementById('mobile-menu');
+  const closeMobileMenu=()=>{
+    if(!menuToggle || !mobileMenu) return;
+    mobileMenu.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded','false');
+    menuToggle.setAttribute('aria-label','Abrir menú');
+  };
+  if(menuToggle && mobileMenu){
+    menuToggle.addEventListener('click',()=>{
+      const isOpen=mobileMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded',String(isOpen));
+      menuToggle.setAttribute('aria-label',isOpen?'Cerrar menú':'Abrir menú');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMobileMenu));
+    window.addEventListener('resize',()=>{if(window.innerWidth>960) closeMobileMenu();});
+  }
   document.querySelectorAll('.clz-head').forEach(h=>{
     h.addEventListener('click',()=>h.parentElement.classList.toggle('open'));
   });
@@ -2026,6 +2117,8 @@
         fecha_envio: new Date().toISOString(),
         pagina: window.location.href,
         nombre: data.get('nombre') || '',
+        apellido: data.get('apellido') || '',
+        nombre_completo: `${data.get('nombre') || ''} ${data.get('apellido') || ''}`.trim(),
         email: data.get('email') || '',
         whatsapp: data.get('whatsapp') || '',
         ubicacion: data.get('ubicacion') || '',
