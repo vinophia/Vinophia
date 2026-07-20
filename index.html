@@ -150,7 +150,7 @@
   .bridge-grid{position:relative;z-index:2;display:grid;grid-template-columns:.85fr 1.15fr;gap:3.5rem;align-items:center}
   .bridge-label{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.3rem}
   .product-bridge h2{font-family:var(--display);font-size:clamp(2.3rem,5.2vw,4.8rem);font-weight:300;line-height:.98;letter-spacing:-.02em;max-width:10ch}
-  .product-bridge h2 span{display:block;font-size:clamp(1.15rem,2vw,1.5rem);font-style:italic;color:var(--paper-dim);margin-top:1.35rem;line-height:1.25;letter-spacing:0}
+  .product-bridge h2 span{display:block;max-width:30ch;font-family:var(--body);font-size:clamp(1.08rem,1.65vw,1.34rem);font-style:normal;font-weight:300;color:var(--paper-dim);margin-top:1.45rem;line-height:1.5;letter-spacing:.01em}
   .bridge-panel{border:0.5px solid var(--line-dark);border-radius:22px;padding:2rem;background:rgba(245,241,234,.035)}
   .bridge-panel p{color:var(--paper-dim);line-height:1.75;font-weight:300;font-size:1.04rem}
   .bridge-panel .bullets{margin-top:1.4rem;display:grid;grid-template-columns:1fr 1fr;gap:.8rem 1.4rem}
@@ -161,18 +161,13 @@
 
   /* FIT */
   .fit{background:var(--paper)}
-  .fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:0.5px solid var(--line-light)}
-  .fit-col{padding:2.4rem 2.5rem}
-  .fit-col:first-child{padding-left:0;border-right:0.5px solid var(--line-light)}
-  .fit-col h3{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:1.6rem}
-  .fit-col.yes h3{color:var(--wine)}.fit-col.no h3{color:var(--muted)}
-  .fit-col ul{list-style:none}
-  .fit-col li{font-size:1rem;line-height:1.5;padding:0.72rem 0 0.72rem 1.5rem;position:relative;border-bottom:0.5px solid var(--line-light)}
-  .fit-col li:last-child{border-bottom:none}
-  .fit-col.yes li::before{content:"—";position:absolute;left:0;color:var(--gold)}
-  .fit-col.no li::before{content:"×";position:absolute;left:0;color:var(--muted)}
-  .fit-col.no li{color:var(--muted)}
-  @media(max-width:760px){.fit-grid{grid-template-columns:1fr}.fit-col,.fit-col:first-child{padding:1.8rem 0;border-right:none;border-top:0.5px solid var(--line-light)}}
+  .fit .section-head h2{max-width:none}
+  .fit-list{max-width:940px;border-top:0.5px solid var(--line-light)}
+  .fit-list ul{list-style:none}
+  .fit-list li{font-size:clamp(1rem,1.35vw,1.1rem);line-height:1.65;padding:1.15rem 0 1.15rem 2rem;position:relative;border-bottom:0.5px solid var(--line-light)}
+  .fit-list li::before{content:"—";position:absolute;left:0;top:1.17rem;font-family:var(--mono);color:var(--gold)}
+  .fit-list li:last-child{border-bottom:none}
+  @media(max-width:760px){.fit-list li{padding-left:1.6rem}}
 
   /* JOURNEY */
   .journey{background:var(--wine-deep);color:var(--paper)}
@@ -390,8 +385,8 @@
   body.theme-dark .application{background:var(--ink);color:var(--paper)}
   body.theme-dark .pillar,
   body.theme-dark .val,
-  body.theme-dark .fit-grid,
-  body.theme-dark .fit-col,
+  body.theme-dark .fit-list,
+  body.theme-dark .fit-list li,
   body.theme-dark .phase-bar,
   body.theme-dark .clz,
   body.theme-dark .dl,
@@ -404,7 +399,6 @@
   body.theme-dark .lead-copy,
   body.theme-dark .phase-meta-line,
   body.theme-dark .clz-inner li,
-  body.theme-dark .fit-col.no li,
   body.theme-dark .opps .intro-copy,
   body.theme-dark .ocell p,
   body.theme-dark .qa p,
@@ -417,7 +411,7 @@
   body.theme-dark .pillar h3,
   body.theme-dark .val h3,
   body.theme-dark .promise blockquote,
-  body.theme-dark .fit-col li,
+  body.theme-dark .fit-list li,
   body.theme-dark .phase-bar .ptitle,
   body.theme-dark .clz-head .ct,
   body.theme-dark .deliver .dl p,
@@ -649,26 +643,15 @@
 <!-- FIT -->
 <section class="fit">
 <div class="wrap">
-<div class="section-head reveal"><span class="eyebrow">Para quién</span><h2>Una mesa de pocos</h2></div>
-<div class="fit-grid">
-<div class="fit-col yes reveal">
-<h3>Es para vos si…</h3>
+<div class="section-head reveal"><h2>Mentoría dirigida a:</h2></div>
+<div class="fit-list reveal">
 <ul>
-<li>Sos sommelier, enólogo, comunicador, consultor o formador del vino y sentís que tu reputación no refleja tu talento real.</li>
-<li>Tenés un negocio del vino y sabés vender, pero te cuesta comunicar desde una voz propia.</li>
-<li>Querés posicionarte como referente en tu nicho, no competir por precio.</li>
-<li>Estás listo para mirar hacia adentro, ordenar tu diferencial y después salir al mundo.</li>
+<li>Sommeliers, profesionales de la enología y chefs que busquen desarrollar su posicionamiento y autoridad profesional.</li>
+<li>Personas relacionadas con el universo del vino, el turismo o la gastronomía que quieran elevar su empleabilidad.</li>
+<li>Personas empresarias, emprendedoras, estudiantes, inversoras y comunicadoras vinculadas al vino y el gastroturismo que necesiten descubrir su voz y fortalecer su identidad digital y presencial.</li>
+<li>Quienes quieran desarrollar una narrativa de marca estratégica, clara, sólida y coherente.</li>
+<li>Profesionales del sector que deseen desarrollar una propuesta de valor magnética, con una estructura base de producto o servicio lista para implementar.</li>
 </ul>
-</div>
-<div class="fit-col no reveal">
-<h3>No es para vos si…</h3>
-<ul>
-<li>Buscás una certificación técnica de cata o enología.</li>
-<li>Querés una fórmula mágica de redes sociales para vender rápido.</li>
-<li>No estás dispuesto a hacer trabajo personal de identidad.</li>
-<li>Esperás resultados sin comprometerte con el proceso.</li>
-</ul>
-</div>
 </div>
 </div>
 </section>
@@ -1064,17 +1047,12 @@
     "y Networking": "and Networking",
     "Embajador Fundador WinesOf": "WinesOf Founding Ambassador",
     "Ver recorrido": "See journey",
-    "Una mesa de pocos": "A small table",
-    "Es para vos si…": "It is for you if…",
-    "Sos sommelier, enólogo, comunicador, consultor o formador del vino y sentís que tu reputación no refleja tu talento real.": "You are a sommelier, winemaker, communicator, consultant or wine educator and feel that your reputation does not reflect your real talent.",
-    "Tenés un negocio del vino y sabés vender, pero te cuesta comunicar desde una voz propia.": "You have a wine business and know how to sell, but struggle to communicate with your own voice.",
-    "Querés posicionarte como referente en tu nicho, no competir por precio.": "You want to position yourself as a reference in your niche, not compete on price.",
-    "Estás listo para mirar hacia adentro, ordenar tu diferencial y después salir al mundo.": "You are ready to look inward, organize your difference and then go out into the world.",
-    "No es para vos si…": "It is not for you if…",
-    "Buscás una certificación técnica de cata o enología.": "You are looking for a technical certification in tasting or enology.",
-    "Querés una fórmula mágica de redes sociales para vender rápido.": "You want a magic social media formula to sell quickly.",
-    "No estás dispuesto a hacer trabajo personal de identidad.": "You are not willing to do personal identity work.",
-    "Esperás resultados sin comprometerte con el proceso.": "You expect results without committing to the process.",
+    "Mentoría dirigida a:": "Mentorship designed for:",
+    "Sommeliers, profesionales de la enología y chefs que busquen desarrollar su posicionamiento y autoridad profesional.": "Sommeliers, winemaking professionals and chefs seeking to develop their professional positioning and authority.",
+    "Personas relacionadas con el universo del vino, el turismo o la gastronomía que quieran elevar su empleabilidad.": "People connected to the worlds of wine, tourism or gastronomy who want to improve their employability.",
+    "Personas empresarias, emprendedoras, estudiantes, inversoras y comunicadoras vinculadas al vino y el gastroturismo que necesiten descubrir su voz y fortalecer su identidad digital y presencial.": "Business owners, entrepreneurs, students, investors and communicators in wine and food tourism who need to discover their voice and strengthen their digital and in-person identity.",
+    "Quienes quieran desarrollar una narrativa de marca estratégica, clara, sólida y coherente.": "People who want to develop a strategic, clear, solid and coherent brand narrative.",
+    "Profesionales del sector que deseen desarrollar una propuesta de valor magnética, con una estructura base de producto o servicio lista para implementar.": "Industry professionals who want to develop a compelling value proposition, with a foundational product or service structure ready to implement.",
     "El recorrido": "The journey",
     "De semilla a vino": "From seed to wine",
     "Semilla": "Seed",
@@ -1526,17 +1504,12 @@
     "y Networking": "e Networking",
     "Embajador Fundador WinesOf": "Embaixador Fundador WinesOf",
     "Ver recorrido": "Ver percurso",
-    "Una mesa de pocos": "Uma mesa de poucos",
-    "Es para vos si…": "É para você se…",
-    "Sos sommelier, enólogo, comunicador, consultor o formador del vino y sentís que tu reputación no refleja tu talento real.": "Você é sommelier, enólogo, comunicador, consultor ou formador do vinho e sente que sua reputação não reflete seu talento real.",
-    "Tenés un negocio del vino y sabés vender, pero te cuesta comunicar desde una voz propia.": "Você tem um negócio do vinho e sabe vender, mas tem dificuldade de comunicar com voz própria.",
-    "Querés posicionarte como referente en tu nicho, no competir por precio.": "Você quer se posicionar como referência no seu nicho, não competir por preço.",
-    "Estás listo para mirar hacia adentro, ordenar tu diferencial y después salir al mundo.": "Você está pronto para olhar para dentro, organizar seu diferencial e depois sair ao mundo.",
-    "No es para vos si…": "Não é para você se…",
-    "Buscás una certificación técnica de cata o enología.": "Você busca uma certificação técnica de degustação ou enologia.",
-    "Querés una fórmula mágica de redes sociales para vender rápido.": "Você quer uma fórmula mágica de redes sociais para vender rápido.",
-    "No estás dispuesto a hacer trabajo personal de identidad.": "Você não está disposto a fazer trabalho pessoal de identidade.",
-    "Esperás resultados sin comprometerte con el proceso.": "Você espera resultados sem se comprometer com o processo.",
+    "Mentoría dirigida a:": "Mentoria dirigida a:",
+    "Sommeliers, profesionales de la enología y chefs que busquen desarrollar su posicionamiento y autoridad profesional.": "Sommeliers, profissionais da enologia e chefs que buscam desenvolver seu posicionamento e autoridade profissional.",
+    "Personas relacionadas con el universo del vino, el turismo o la gastronomía que quieran elevar su empleabilidad.": "Pessoas ligadas ao universo do vinho, do turismo ou da gastronomia que desejam ampliar sua empregabilidade.",
+    "Personas empresarias, emprendedoras, estudiantes, inversoras y comunicadoras vinculadas al vino y el gastroturismo que necesiten descubrir su voz y fortalecer su identidad digital y presencial.": "Pessoas empresárias, empreendedoras, estudantes, investidoras e comunicadoras vinculadas ao vinho e ao gastroturismo que precisam descobrir sua voz e fortalecer sua identidade digital e presencial.",
+    "Quienes quieran desarrollar una narrativa de marca estratégica, clara, sólida y coherente.": "Quem deseja desenvolver uma narrativa de marca estratégica, clara, sólida e coerente.",
+    "Profesionales del sector que deseen desarrollar una propuesta de valor magnética, con una estructura base de producto o servicio lista para implementar.": "Profissionais do setor que desejam desenvolver uma proposta de valor magnética, com uma estrutura-base de produto ou serviço pronta para implementar.",
     "El recorrido": "O percurso",
     "De semilla a vino": "Da semente ao vinho",
     "Semilla": "Semente",
